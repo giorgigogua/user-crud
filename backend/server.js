@@ -20,7 +20,7 @@ const db = mysql.createConnection({
 app.get('/users', (req, res) => {
     const sql = "SELECT * FROM user";
     db.query(sql, (err, result) => {
-        if (err) return res.json({ Message: "Error inside server" })
+        if (err) return res.json({ ErrorMessage: "Error inside server" })
         return res.json(result)
     })
 })
@@ -29,7 +29,7 @@ app.get('/get_users/:id', (req, res) => {
     const id = req.params.id
     const sql = "SELECT * FROM user WHERE `id`= ?";
     db.query(sql, [id], (err, result) => {
-        if (err) return res.json({ Message: "Error inside server" })
+        if (err) return res.json({ ErrorMessage: "Error inside server" })
         return res.json(result)
     })
 })
@@ -43,8 +43,8 @@ app.post('/user', (req, res) => {
         req.body.age
     ]
     db.query(sql, values, (err, result) => {
-        if (err) return res.json({ message: 'something went wrong' + err })
-        return res.json({ success: 'user created' })
+        if (err) return res.json({ ErrorMessage: 'Something went wrong' + err })
+        return res.json({ success: 'User created succesfully' })
     })
 })
 
@@ -60,8 +60,8 @@ app.put('/edit_user/:id', (req, res) => {
         id
     ]
     db.query(sql, values, (err, result) => {
-        if (err) return res.json({ message: 'something went wrong' + err })
-        return res.json({ success: 'user created' })
+        if (err) return res.json({ ErrorMessage: 'something went wrong' + err })
+        return res.json({ success: 'User updated successfuly' })
     })
 })
 
@@ -71,8 +71,8 @@ app.delete('/delete/:id', (req, res) => {
     const sql = "DELETE FROM user WHERE id=?";
     const values = [id]
     db.query(sql, values, (err, result) => {
-        if (err) return res.json({ message: 'something went wrong' + err })
-        return res.json({ success: 'user created' })
+        if (err) return res.json({ ErrorMessage: 'something went wrong' + err })
+        return res.json({ success: 'User deleted successfuly' })
     })
 })
 

@@ -26,6 +26,11 @@ const Home = () => {
         axios.delete(`http://localhost:5000/delete/${id}`)
             .then((res) => {
                 setDeleted(true)
+                try {
+                    alert(res.data.success)
+                } catch (err) {
+                    console.log(err)
+                }
             })
             .catch(err => console.log(err))
     }

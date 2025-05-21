@@ -20,14 +20,22 @@ const Create = () => {
         if (values.name && values.lastName && values.age && values.email) {
             axios.post('http://localhost:5000/user', values)
                 .then(res => {
-                    console.log(res)
+
+                    try {
+                        alert(res.data.success)
+                    } catch (err) {
+                        console.log(err)
+                    }
+
                     navigate('/')
                 })
                 .catch(err => console.log(err))
+
         }
     }
     return (
         <div className="w-100 d-flex flex-column justify-content-center align-items-center py-5">
+
             <div className="shadow p-3">
                 <div>
                     <h1>Add New</h1>

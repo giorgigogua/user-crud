@@ -23,24 +23,17 @@ const Edit = () => {
         e.preventDefault()
         axios.put(`http://localhost:5000/edit_user/${id}`, data[0])
             .then(res => {
-                console.log(res)
                 navigate('/')
+                try {
+                    alert(res.data.success)
+                } catch (err) {
+                    console.log(err)
+                }
             })
             .catch(err => console.log(err))
 
     }
     return (
-        // <div>
-        //     {data && Array.isArray(data) && data.map((res) => {
-        //         return <form onSubmit={handleSubmit}>
-        //             <input value={res.name} onChange={e => setData([{ ...data[0], name: e.target.value }])} type="text" placeholder="name" />
-        //             <input value={res.lastName} onChange={e => setData([{ ...data[0], lastName: e.target.value }])} type="text" placeholder="lastname" />
-        //             <input value={res.email} onChange={e => setData([{ ...data[0], email: e.target.value }])} type="text" placeholder="email" />
-        //             <input value={res.age} onChange={e => setData([{ ...data[0], age: e.target.value }])} type="text" placeholder="age" />
-        //             <button>create</button>
-        //         </form>
-        //     })}
-        // </div>
 
         <div className="w-100 h-100 d-flex flex-column justify-content-center align-items-center py-5">
             <div className="p-3 shadow">
